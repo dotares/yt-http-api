@@ -1,23 +1,13 @@
 import express from "express";
 import "dotenv/config";
 
+import getVideos from "./getVideos.js";
+
 const app = express();
 const port = process.env.PORT;
 
-const getVideos = async (query) => {
-    try {
-        const response = await fetch(
-            `https://www.youtube.com/results?search_query=${query}+audio`
-        );
-        const resultsString = await response.text();
-        return resultsString;
-    } catch (error) {
-        console.log(error);
-    }
-};
-
-app.get("/", async (req, res) => {
-    res.send(await getVideos("icecream"));
+app.get("/:listenId", async (req, res) => {
+    res.send(await getVideos(`${req.params.listenId}`));
 });
 
 app.listen(port, () => {
