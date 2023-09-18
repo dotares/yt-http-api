@@ -1,5 +1,4 @@
-import { getVideoIds } from "./regex.js";
-// import { getVideoTitles } from "./regex.js";
+import { getCleanedData } from "./regex.js";
 
 const getVideos = async (query) => {
     try {
@@ -8,8 +7,7 @@ const getVideos = async (query) => {
         );
         const resultsString = await response.text();
 
-        getVideoIds(resultsString);
-        // getVideoTitles(resultsString);
+        getCleanedData(resultsString);
 
         return resultsString;
     } catch (error) {
