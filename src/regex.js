@@ -18,11 +18,6 @@ export function getCleanedData(input) {
         (artistMatch = artistRegex.exec(input)) !== null &&
         (coverMatch = coverRegex.exec(input)) !== null
     ) {
-        console.log(idMatch[0].slice(-12, -1));
-        console.log(titleMatch[0].slice(27, -3));
-        console.log(artistMatch[0].slice(36, -1));
-        console.log(coverMatch[0].slice(60, -27));
-
         searchResults.push({
             videoId: idMatch[0].slice(-12, -1),
             videoTitle: titleMatch[0].slice(27, -3),
@@ -31,6 +26,5 @@ export function getCleanedData(input) {
         });
     }
 
-    console.log(searchResults);
-    console.log(searchResults.length);
+    return searchResults;
 }

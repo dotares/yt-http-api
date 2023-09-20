@@ -7,9 +7,7 @@ const getVideos = async (query) => {
         );
         const resultsString = await response.text();
 
-        getCleanedData(resultsString);
-
-        return resultsString;
+        return getCleanedData(resultsString);
     } catch (error) {
         console.log(error);
     }
