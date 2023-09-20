@@ -1,12 +1,14 @@
 export function getCleanedData(input) {
-    let idRegex = /\{"videoRenderer":\{"videoId":"[^"]*"/g;
-    let titleRegex = /,"title":\{"runs":\[\{"text":"[^"]*"\}\]/g;
+    const idRegex = /\{"videoRenderer":\{"videoId":"[^"]*"/g;
+    const titleRegex = /,"title":\{"runs":\[\{"text":"[^"]*"\}\]/g;
 
     let idMatch;
     let titleMatch;
 
     let idIterations = 0;
     let titleIterations = 0;
+
+    let searchResults = [];
 
     while (
         (idMatch = idRegex.exec(input)) !== null &&
@@ -15,10 +17,16 @@ export function getCleanedData(input) {
         console.log(idMatch[0].slice(-12, -1));
         console.log(titleMatch[0].slice(27, -3));
 
+        searchResults.push({
+            videoId: idMatch[0].slice(-12, -1),
+            videoTitle: titleMatch[0].slice(27, -3),
+        });
+
         idIterations++;
         titleIterations++;
     }
 
-    console.log(idIterations);
-    console.log(titleIterations);
+    // console.log(idIterations);
+    // console.log(titleIterations);
+    console.log(searchResults);
 }
