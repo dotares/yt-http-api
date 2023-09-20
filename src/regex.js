@@ -14,7 +14,7 @@ export function getCleanedData(input) {
     }
 
     while ((titleMatch = titleRegex.exec(input)) !== null) {
-        console.log(titleMatch[0]);
+        console.log(titleMatch[0].slice(27, -3));
         titleIterations++;
     }
 
