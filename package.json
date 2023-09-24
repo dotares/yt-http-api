@@ -6,6 +6,9 @@
     "scripts": {
         "start": "node src/app.js"
     },
+    "engines": {
+        "node": "20.5.1"
+    },
     "type": "module",
     "devDependencies": {
         "@types/express": "^4.17.17",
