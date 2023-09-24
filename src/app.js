@@ -6,8 +6,12 @@ import getVideos from "./getVideos.js";
 const app = express();
 const port = process.env.PORT;
 
-app.get("/:listenId", async (req, res) => {
-    res.send(await getVideos(`${req.params.listenId}`));
+app.get("/listen", async (req, res) => {
+    try {
+        res.send(await getVideos(`${req.query.t}`));
+    } catch (err) {
+        console.log(err);
+    }
 });
 
 app.listen(port, () => {
